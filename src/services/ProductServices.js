@@ -121,19 +121,52 @@ const ListByRemarkService=async(req)=>{
 }
 
 
+const ListBySimilarService=async()=>{
+    try {
+        let CategoryID=  new ObjectId(req.params.CategoryID);
+        let MatchStage={$match:{categoryID:CategoryID}}
+        let LimitStage={$limit:20}
+        let JoinWithBrandStage= {$lookup:{from:"brands",localField:"brandID",foreignField:"_id",as:"brand"}};
+        let JoinWithCategoryStage={$lookup:{from:"categories",localField:"categoryID",foreignField:"_id",as:"category"}};
+        let UnwindBrandStage={$unwind:"$brand"}
+        let UnwindCategoryStage={$unwind:"$category"}
+        let ProjectionStage={$project:{'brand._id':0,'category._id':0,'categoryID':0,'brandID':0}}
+
+        let data= await  ProductModel.aggregate([
+            MatchStage,LimitStage, JoinWithBrandStage,JoinWithCategoryStage,
+            UnwindBrandStage,UnwindCategoryStage, ProjectionStage
+        ])
+        return {status:"success",data:data}
+
+    }catch (e) {
+        return {status:"fail",data:e}.toString()
+    }
+}
 
 
+const DetailsService=async()=>{
+    try{
 
+        let ProductID=  new ObjectId(req.params.ProductID);
+        let MatchStage={$match:{_id:ProductID}}
+        let JoinWithBrandStage= {$lookup:{from:"brands",localField:"brandID",foreignField:"_id",as:"brand"}};
+        let JoinWithCategoryStage={$lookup:{from:"categories",localField:"categoryID",foreignField:"_id",as:"category"}};
+        let JoinDetailsStage={$lookup:{from:"productdetails",localField:"_id",foreignField:"productID",as:"details"}};
+        let UnwindBrandStage={$unwind:"$brand"}
+        let UnwindCategoryStage={$unwind:"$category"}
+        let UnwindDetailsStage={$unwind:"$details"}
+        let ProjectionStage={$project:{'brand._id':0,'category._id':0,'categoryID':0,'brandID':0}}
 
+        let data= await  ProductModel.aggregate([
+            MatchStage, JoinWithBrandStage,JoinWithCategoryStage,JoinDetailsStage,
+            UnwindBrandStage,UnwindCategoryStage,UnwindDetailsStage, ProjectionStage
+        ])
+        return {status:"success",data:data}
+    }
+    catch(e){
+        return {status:"fail",data:e}.toString()
 
-
-
-
-
-
-
-
-const ListBySmilierService=async()=>{
+    }
 
 }
 
@@ -144,12 +177,11 @@ const ListByKeywardService=async()=>{
 }
 
 
-const DetailsService=async()=>{
-
-}
-
 
 const ReviewListService=async()=>{
 
 }
-module.exports={BrandListService,CategoryListService,SliderListService,ListByBrandService,ListByCategoryService,ListByRemarkService}
+
+
+
+module.exports={BrandListService,CategoryListService,SliderListService,ListByBrandService,ListByCategoryService,ListByRemarkService,ListBySimilarService,DetailsService}

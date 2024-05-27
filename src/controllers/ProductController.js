@@ -1,4 +1,4 @@
-const {BrandListService,CategoryListService,SliderListService,ListByBrandService,ListByCategoryService,ListByRemarkService}=require('../services/ProductServices')
+const {BrandListService,CategoryListService,SliderListService,ListByBrandService,ListByCategoryService,ListByRemarkService,ListBySimilarService,DetailsService}=require('../services/ProductServices')
 
 exports.ProductBrandList=async(req,res)=>{
     let result=await BrandListService();
@@ -28,6 +28,8 @@ exports.ProductListByCategory=async(req,res)=>{
 }
 
 exports.ProductListBySmilier=async(req,res)=>{
+    let result=await ListBySimilarService(req);
+    return res.status(200).json(result)
 
 }
 
@@ -42,6 +44,8 @@ exports.ProductListByRemark=async(req,res)=>{
 
 
 exports.ProductDetails=async(req,res)=>{
+    let result=await ListByRemarkService(req);
+    return res.status(200).json(result)
 
 }
 

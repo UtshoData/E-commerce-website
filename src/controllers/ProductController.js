@@ -1,4 +1,4 @@
-const {BrandListService,CategoryListService,SliderListService,ListByCategoryService,ListByBrandService,ListByRemarkService,ListBySmilierService,ListByKeywordService,DetailsService,ReviewListService}=require('../services/ProductServices')
+const {BrandListService,CategoryListService,SliderListService}=require('../services/ProductServices')
 
 exports.ProductBrandList=async(req,res)=>{
     let result=await BrandListService();

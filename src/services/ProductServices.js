@@ -53,6 +53,7 @@ const SliderListService=async()=>{
 
 
 const ListByBrandService=async()=>{
+    
 
 }
 
@@ -85,19 +86,4 @@ const DetailsService=async()=>{
 const ReviewListService=async()=>{
 
 }
-
-
-
-module.exports={
-    BrandListService,
-    CategoryListService,
-    SliderListService,
-    ListByCategoryService,
-    ListByBrandService,
-    ListByRemarkService,
-    ListBySmilierService,
-    ListByKeywordService,
-    DetailsService,
-    ReviewListService
-
-}
+module.exports={BrandListService,CategoryListService,SliderListService}

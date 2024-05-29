@@ -19,7 +19,7 @@ router.get('/ProductReviewList/:ProductID',ProductController.ProductReviewList)
 
 
 //user
-router.get('/UserOTP',UserController.UserOTP)
+router.get('/UserOTP/:email',UserController.UserOTP)
 router.get('/VerifyLogin',UserController.VerifyLogin)
 router.get('/UserLogout',UserController.UserLogout)
 router.get('/CreateProfile',UserController.CreateProfile)

@@ -1,8 +1,4 @@
-const {UserOTPService, VerifyLoginService,
-    LogoutService,
-    CreateProfileService,
-    UpdateProfileService,
-    ReadProfileService}=require('../services/UserServices')
+const {UserOTPService}=require('../services/UserServices')
 
 exports.UserOTP=async(req,res)=>{
     let result= await UserOTPService();

@@ -17,15 +17,8 @@ router.get('/ProductDetails/:ProductID',ProductController.ProductDetails)
 router.get('/ProductReviewList/:ProductID',ProductController.ProductReviewList)
 
 
-
 //user
 router.get('/UserOTP/:email',UserController.UserOTP)
-router.get('/VerifyLogin',UserController.VerifyLogin)
-router.get('/UserLogout',UserController.UserLogout)
-router.get('/CreateProfile',UserController.CreateProfile)
-router.get('/UpdateProfile',UserController.UpdateProfile)
-router.get('/ReadProfile',UserController.ReadProfile)
-
 
 
 

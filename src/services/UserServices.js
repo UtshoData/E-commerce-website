@@ -7,7 +7,6 @@ const UserOTPService=async(req)=>{
     try {
         let email=req.params.email;
         let code=Math.floor(100000+Math.random()*900000);
-
         let EmailText=`Your Verification Code is= ${code}`
         let EmailSubject='Email Verification'
 
@@ -45,9 +44,4 @@ const UpdateProfileService=async(req)=>{
 const ReadProfileService=async(req)=>{
 
 }
-module.exports={UserOTPService,
-    VerifyLoginService,
-    LogoutService,
-    CreateProfileService,
-    UpdateProfileService,
-    ReadProfileService}
+module.exports={UserOTPService}

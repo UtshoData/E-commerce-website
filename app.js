@@ -48,4 +48,7 @@ app.get('*',function (req,res) {
     res.sendFile(path.resolve(__dirname,'client','dist','index.html'))
 })
 
-module.exports=app;
+const PORT=4011;
+app.listen(PORT, () => {
+    console.log(`Example app listening on port ${PORT}`)
+  })

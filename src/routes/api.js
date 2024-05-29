@@ -18,7 +18,7 @@ router.get('/ProductReviewList/:ProductID',ProductController.ProductReviewList)
 
 
 //user
-router.get('/UserOTP/:email',UserController.UserOTP)
+router.post('/registration',UserController.registration)
 
 
 

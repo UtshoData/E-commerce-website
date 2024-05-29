@@ -1,10 +1,19 @@
-const {UserOTPService}=require('../services/UserServices')
 
-exports.UserOTP=async(req,res)=>{
-    let result= await UserOTPService();
-    return res.status(200).json(result)
+const UserModel = require("../models/UserModel");
+
+
+
+exports.registration=(req,res)=>{
+    let reqBody=req.body
+        UserModel.create(reqBody)
+        .then(data => {
+            res.status(200).json({ status: "success", data: data });
+        })
+        .catch(err => {
+            res.status(404).json({ status: "fail", data: err });
+        });
+    }
     
-}
 
 exports.VerifyLogin=async(req,res)=>{
     

@@ -2,15 +2,15 @@ const nodemailer = require("nodemailer");
 
 const EmailSend = async (EmailTo, EmailText, EmailSubject) => {
   let transport = nodemailer.createTransport({
-    host: "mail.teamrabbil.com",
-    port: 25,
-    secure: false,
-    auth: { user: "info@teamrabbil.com", pass: "~sR4[bhaC[Qs" },
-    tls: { rejectUnauthorized: false },
+    host: 'smtp.ethereal.email',
+    port: 587,
+    auth: {
+        user: 'mavis.walsh51@ethereal.email',
+        pass: 'MPSMeF1FK527fxjx8N'}
   });
 
   let mailOption = {
-    from: "MERN Ecommerce Solution <info@teamrabbil.com>",
+    from: "MERN Ecommerce Solution <mavis.walsh51@ethereal.email>",
     to: EmailTo,
     subject: EmailSubject,
     text: EmailText,

@@ -1,5 +1,6 @@
 const EmailSend = require("../utility/EmailHelper");
 const UserModel = require("../models/UserModel");
+const ProfileModel=require("../models/ProfileModel")
 const { EncodeToken } = require("../utility/TokenHelper");
 
 
@@ -24,7 +25,6 @@ const VerifyLoginService = async (req) => {
     }
         
 
-    
 
 };
 
@@ -55,4 +55,6 @@ const ReadProfileService = async (req) => {
 };
 
 
-module.exports={VerifyLoginService,SaveProfileService,ReadProfileService}
+module.exports={VerifyLoginService,
+    SaveProfileService,
+    ReadProfileService}
